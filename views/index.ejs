@@ -13,7 +13,7 @@
     </label>
     <button type="submit">Submit</button>
   </form> -->
-  <p>Hello <%= text %></p>
+  <p>Hello <%= locals.text1 || 'default' %></p>
   <p>Hello <%= 2+2 %></p>
 </body>
 </html>
