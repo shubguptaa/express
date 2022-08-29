@@ -17,8 +17,22 @@ router.get("/new", (req, res) => {
 // So if anyhting from top to bottom matches, it returns that.
 // So anything Static should always be on top of Dynamic Routes.
 // If the /:userId dynamic route is put above /new, users/new will route to users/:userId since userId is just a variable.
-router.get("/:userId", (req, res) => {
-	res.send(`Get User with ID: ${req.params.userId}`);
-});
+// router.get("/:userId", (req, res) => {
+// 	res.send(`Get User with ID: ${req.params.userId}`);
+// });
+
+// Now to create get, put, delete routes, you can use Router.routes() instead of creating individual router.get, router.post, etc.
+// So we only have to define our route once.
+router
+	.route("/:userId")
+	.get((req, res) => {
+		res.send(`Get User with ID: ${req.params.userId}`);
+	})
+	.put("/:userId", (req, res) => {
+		res.send(`Update User with ID: ${req.params.userId}`);
+	})
+	.delete("/:userId", (req, res) => {
+		res.send(`Delete User with ID: ${req.params.userId}`);
+	});
 
 module.exports = router;
