@@ -26,13 +26,26 @@ router.get("/new", (req, res) => {
 router
 	.route("/:userId")
 	.get((req, res) => {
-		res.send(`Get User with ID: ${req.params.userId}`);
+		res.send(
+			`Get User with ID: ${req.params.userId} and Name: ${req.userName}`
+		);
 	})
-	.put("/:userId", (req, res) => {
+	.put((req, res) => {
 		res.send(`Update User with ID: ${req.params.userId}`);
 	})
-	.delete("/:userId", (req, res) => {
+	.delete((req, res) => {
 		res.send(`Delete User with ID: ${req.params.userId}`);
 	});
+
+const users = [{ name: "Buttler" }, { name: "James" }];
+
+// Use a in-built Middleware called router.param
+router.param("userId", (req, res, next, userId) => {
+	req.userName = users[userId].name;
+	// without next(), the code won't execute further from middleware
+	next();
+});
+
+// Middleware is code that is running in the middle of trigger and execution and next() is generally used here to go to that next step.
 
 module.exports = router;

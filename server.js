@@ -3,6 +3,8 @@ const express = require("express");
 
 const app = express();
 
+// IMPORTANT: Everything runs top to bottom.
+
 // define your routes
 app.get("/", (req, res) => [
 	// run this code when you're trying to acess '/'
