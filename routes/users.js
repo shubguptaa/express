@@ -4,6 +4,14 @@
 const express = require("express");
 const router = express.Router();
 
+// Similarly you could create a middleware logger, just for users.js
+function logger(req, res, next) {
+	console.log(req.originalUrl);
+	next();
+}
+
+router.use(logger);
+
 router.get("/", (req, res) => {
 	res.send("Users List");
 });

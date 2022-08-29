@@ -14,7 +14,8 @@ function logger(req, res, next) {
 // This will put the middleware at the top and everything below will use it.
 app.use(logger);
 
-// another way for a route to use middleware is by passing the function in the middle, like below:
+// another way for a route to use middleware is by passing the function in the middle, like below.
+// you can also put as many middleware functions as you like.
 // app.get("/", logger, (req, res) => {
 // 	res.send("Do stuff");
 // });
