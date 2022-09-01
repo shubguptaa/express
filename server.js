@@ -20,6 +20,9 @@ app.use(logger);
 // 	res.send("Do stuff");
 // });
 
+// Static File Rendering Middleware
+// app.set(express.static("public"));
+
 // define your routes
 app.get("/", (req, res) => [
 	// run this code when you're trying to acess '/'
